@@ -17,18 +17,19 @@ public class Produto implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = true, unique = false)
+    @Column(nullable = false, unique = true)
     private String nome;
 
-    // @Column
+     @Column(nullable = false, unique = true)
     private Double valorProduto;
 
-    //@Column
+    @Column(nullable = false, unique = true)
     private Boolean StatusProduto;
 
     @ManyToOne
     @JoinColumn(name = "id_categoria", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_categoria"))
     private Categoria categoria;
+
 
     @JsonBackReference
     public Categoria getCategoria() {

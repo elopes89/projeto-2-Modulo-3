@@ -7,6 +7,7 @@ import com.projeto2.modulo3.service.CategoriaService;
 import com.projeto2.modulo3.service.ProdutoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -43,7 +44,7 @@ public class ProdutoController {
 
     @ApiOperation("ALTERAR")
     @PutMapping
-    public ResponseEntity<ProdutoDto> alterar(@RequestBody ProdutoInput produto) {
+    public ResponseEntity<ProdutoDto> alterar(@ApiParam(value = "Produto editado: ", example = "1") @RequestBody ProdutoInput produto) {
         Produto prod = toDomain(produto);
         produtoService.salvar(prod);
         return new ResponseEntity<ProdutoDto>(toModel(prod), HttpStatus.CREATED);
@@ -52,9 +53,9 @@ public class ProdutoController {
     @ApiOperation("DELETAR")
     @DeleteMapping
     @ResponseBody
-    public ResponseEntity<String> delete(@RequestParam Long idProduto) {
+    public ResponseEntity<String> delete(@ApiParam(value = "Id deletado com sucesso", example = "1") @RequestParam Long idProduto) {
         produtoService.delete(idProduto);
-        return new ResponseEntity<String>("Produto Deletado: " + idProduto, HttpStatus.OK);
+        return new ResponseEntity<String>("Id do Produto Deletado: " + idProduto, HttpStatus.OK);
     }
 
 
