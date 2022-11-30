@@ -26,18 +26,14 @@ public class ProdutoController {
     @Autowired
     CategoriaService categoriaService;
 
-    @GetMapping("/")
-    public String teste() {
-        return "Borrrraa";
-    }
-
     @ApiOperation("LISTAR")
     @GetMapping
-    public ResponseEntity<List<Produto>> listar() {
+    public ResponseEntity<List<ProdutoDto>> listar() {
         List<Produto> produtos = produtoService.list();
-        return new ResponseEntity<List<Produto>>(produtos, HttpStatus.OK);
+        return new ResponseEntity<List<ProdutoDto>>(toCollection(produtos), HttpStatus.OK);
     }
 
+    @ApiOperation("CADASTRAR")
     @PostMapping
     public ResponseEntity<ProdutoDto> cadastrar(@RequestBody ProdutoInput produto) {
         Produto prod = toDomain(produto);
@@ -45,6 +41,15 @@ public class ProdutoController {
         return new ResponseEntity<ProdutoDto>(toModel(prod), HttpStatus.CREATED);
     }
 
+    @ApiOperation("ALTERAR")
+    @PutMapping
+    public ResponseEntity<ProdutoDto> alterar(@RequestBody ProdutoInput produto) {
+        Produto prod = toDomain(produto);
+        produtoService.salvar(prod);
+        return new ResponseEntity<ProdutoDto>(toModel(prod), HttpStatus.CREATED);
+    }
+
+    @ApiOperation("DELETAR")
     @DeleteMapping
     @ResponseBody
     public ResponseEntity<String> delete(@RequestParam Long idProduto) {
@@ -52,6 +57,8 @@ public class ProdutoController {
         return new ResponseEntity<String>("Produto Deletado: " + idProduto, HttpStatus.OK);
     }
 
+
+    @ApiOperation("LISTAR TOTAL DE COMPRADOS")
     @GetMapping(value = "/total")
     public ResponseEntity<String> getValorComprado() {
         return new ResponseEntity<String>("Total comprado: " + produtoService.getTotalComprado().toString(), HttpStatus.OK);
@@ -67,6 +74,7 @@ public class ProdutoController {
 
         return produto;
     }
+
     private ProdutoDto toModel(Produto produto) {
         ProdutoDto dto = new ProdutoDto();
         dto.setId(produto.getId());
