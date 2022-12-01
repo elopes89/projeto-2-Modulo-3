@@ -1,13 +1,23 @@
-# Projeto 2 Modulo-3 Futuro DEV
+# Projeto 2 Modulo 3 Futuro DEV
 
 Projeto desenvolvido em java com Spring Boot.
 
-## Requisitos para uso do projeto:
+## Ferramentas necessárias para uso do projeto:
 
   - Intellij
   - Postman
   - PgAdmin4 ou DBeaver
-Projeto documentado com a ferramenta Swagger.
+  - Google Chrome
+
+## Como usar a aplicação
+
+- No Intellij abra o arquivo pom.xml projeto como projeto 
+- Inicie a aplicação
+- Na ferramenta de banco de dados verifique se foram criadas as tabelas
+- No Postman ou no Swagger execute os endpoints
+- Retorne ao DBeaver e veja os resultados da manipulação obtida com os endpoints
+  
+## Projeto documentado com a ferramenta Swagger.
 O projeto pode ser utilizado com a ferrmenta no link: 
  [Swagger](http://localhost:4000/swagger-ui.html#/)
 
@@ -17,3 +27,6 @@ O projeto pode ser utilizado com a ferrmenta no link:
 ![](/modulo3/src/main/resources/modeloRelacional.png)
 
 
+
+## Funcionalidade da aplicação
+Com a aplicação é possível fazer um crud completo tanto de produtos quanto de suas categoarias. Ou seja, é possível: salvar, deletar, editar e listar ambas as entidades do projeto.
