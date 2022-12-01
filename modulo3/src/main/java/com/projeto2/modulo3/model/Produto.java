@@ -17,9 +17,10 @@ public class Produto implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    // @NotBlank(message = "O nome é obrigatório!")
     @Column(nullable = false, unique = true)
     private String nome;
-
+    @NotBlank(message = "O nome é obrigatório!")
      @Column(nullable = false, unique = true)
     private Double valorProduto;
 
