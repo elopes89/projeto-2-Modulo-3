@@ -11,7 +11,7 @@ Projeto desenvolvido em java com Spring Boot.
 
 ## Como usar a aplicação
 
-- No Intellij abra o arquivo pom.xml projeto como projeto 
+- No Intellij abra o arquivo pom.xml como projeto 
 - Inicie a aplicação
 - Na ferramenta de banco de dados verifique se foram criadas as tabelas
 - No Postman ou no Swagger execute os endpoints
