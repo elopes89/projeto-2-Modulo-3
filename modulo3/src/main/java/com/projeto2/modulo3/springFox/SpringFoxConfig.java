@@ -12,7 +12,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.builders.RequestHandlerSelectors;
 
-
 @Configuration
 @EnableSwagger2
 public class SpringFoxConfig implements WebMvcConfigurer{
@@ -38,8 +37,8 @@ public class SpringFoxConfig implements WebMvcConfigurer{
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("swagger-ui.html")  // informamos o arquivo a ser renderizado
-                .addResourceLocations("classpath:/META-INF/resources/"); //caminho do arquivo
+        registry.addResourceHandler("swagger-ui.html")
+                .addResourceLocations("classpath:/META-INF/resources/");
 
         registry.addResourceHandler("/webjars/**")
                 .addResourceLocations("classpath:/META-INF/resources/webjars/");

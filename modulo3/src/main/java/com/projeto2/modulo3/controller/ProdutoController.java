@@ -7,6 +7,7 @@ import com.projeto2.modulo3.service.CategoriaService;
 import com.projeto2.modulo3.service.ProdutoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,18 +27,14 @@ public class ProdutoController {
     @Autowired
     CategoriaService categoriaService;
 
-    @GetMapping("/")
-    public String teste() {
-        return "Borrrraa";
-    }
-
     @ApiOperation("LISTAR")
     @GetMapping
-    public ResponseEntity<List<Produto>> listar() {
+    public ResponseEntity<List<ProdutoDto>> listar() {
         List<Produto> produtos = produtoService.list();
-        return new ResponseEntity<List<Produto>>(produtos, HttpStatus.OK);
+        return new ResponseEntity<List<ProdutoDto>>(toCollection(produtos), HttpStatus.OK);
     }
 
+    @ApiOperation("CADASTRAR")
     @PostMapping
     public ResponseEntity<ProdutoDto> cadastrar(@RequestBody ProdutoInput produto) {
         Produto prod = toDomain(produto);
@@ -45,13 +42,24 @@ public class ProdutoController {
         return new ResponseEntity<ProdutoDto>(toModel(prod), HttpStatus.CREATED);
     }
 
-    @DeleteMapping
-    @ResponseBody
-    public ResponseEntity<String> delete(@RequestParam Long idProduto) {
-        produtoService.delete(idProduto);
-        return new ResponseEntity<String>("Produto Deletado: " + idProduto, HttpStatus.OK);
+    @ApiOperation("ALTERAR")
+    @PutMapping
+    public ResponseEntity<ProdutoDto> alterar(@ApiParam(value = "Produto editado: ", example = "1") @RequestBody ProdutoInput produto) {
+        Produto prod = toDomain(produto);
+        produtoService.salvar(prod);
+        return new ResponseEntity<ProdutoDto>(toModel(prod), HttpStatus.CREATED);
     }
 
+    @ApiOperation("DELETAR")
+    @DeleteMapping
+    @ResponseBody
+    public ResponseEntity<String> delete(@ApiParam(value = "Id deletado com sucesso", example = "1") @RequestParam Long idProduto) {
+        produtoService.delete(idProduto);
+        return new ResponseEntity<String>("Id do Produto Deletado: " + idProduto, HttpStatus.OK);
+    }
+
+
+    @ApiOperation("LISTAR TOTAL DE COMPRADOS")
     @GetMapping(value = "/total")
     public ResponseEntity<String> getValorComprado() {
         return new ResponseEntity<String>("Total comprado: " + produtoService.getTotalComprado().toString(), HttpStatus.OK);
@@ -67,6 +75,7 @@ public class ProdutoController {
 
         return produto;
     }
+
     private ProdutoDto toModel(Produto produto) {
         ProdutoDto dto = new ProdutoDto();
         dto.setId(produto.getId());

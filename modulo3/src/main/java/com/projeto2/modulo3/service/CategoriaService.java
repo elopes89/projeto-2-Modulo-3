@@ -1,11 +1,13 @@
 package com.projeto2.modulo3.service;
 
+import com.projeto2.modulo3.dto.CategoriaDto;
 import com.projeto2.modulo3.model.Categoria;
 import com.projeto2.modulo3.repository.CategoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 public class CategoriaService {
@@ -27,4 +29,9 @@ public class CategoriaService {
         return categoriaRepository.findById(idCategoria).get();
     }
 
+    @Transactional
+    public List<Categoria> listar(){
+        List<Categoria> categoria = categoriaRepository.findAll();
+        return categoria;
+    }
 }
