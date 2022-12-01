@@ -14,6 +14,6 @@ C:/Users/djblabla/Documents/corel.pdf
 Projeto documentado com a ferramenta Swagger.
 O mesmo pode ser utilizado com a mesma no link:
 
-<a href="http://localhost:4000/swagger-ui.html#/">Swagger</a>
+<a href="http://localhost:4000/swagger-ui.html#/" targert blank>Swagger</a>
 
 
