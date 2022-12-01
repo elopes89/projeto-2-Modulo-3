@@ -23,7 +23,7 @@ public class Categoria implements Serializable {
     private String nome;
 
     private String descricao;
-
+    
     @OneToMany(mappedBy = "categoria", fetch = FetchType.EAGER)
     private List<Produto> produtos = new ArrayList<Produto>();
 
