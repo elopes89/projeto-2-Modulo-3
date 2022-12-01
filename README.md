@@ -4,7 +4,7 @@ Projeto desenvolvido em java com Spring Boot.
 
 ## Ferramentas necessárias para uso do projeto:
 
-  - Intellij
+  - Intellij 
   - Postman
   - PgAdmin4 ou DBeaver
   - Google Chrome
