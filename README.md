@@ -27,7 +27,8 @@ O projeto pode ser utilizado com a ferrmenta no link:
 ![](/modulo3/src/main/resources/modeloRelacional.png)
 
 ## Exemplo de como cadastrar um produto:
-
+### Método POST
+### Url http://localhost:4000/produtos
 
     {
         "nome": "bolacha",
