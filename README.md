@@ -24,9 +24,9 @@ O projeto pode ser utilizado com a ferrmenta no link:
 
 ## Foto do modelo Relacional
 
-## Exemplos de execução no Postman ou no Swagger
-
 ![](/modulo3/src/main/resources/modeloRelacional.png)
+
+## Exemplos de execução no Postman ou no Swagger
 
 ### Exemplo de como cadastrar uma categoria:
 ### Método POST
