@@ -26,7 +26,30 @@ O projeto pode ser utilizado com a ferrmenta no link:
 
 ![](/modulo3/src/main/resources/modeloRelacional.png)
 
+## Exemplo de como cadastrar um produto:
+
+
+    {
+        "nome": "bolacha",
+        "valorProduto":5.0,
+        "statusProduto": true,
+        "id_categoria":1
+    }
+
+
+
 
 
 ## Funcionalidade da aplicação
 Com a aplicação é possível fazer um crud completo tanto de produtos quanto de suas categoarias. Ou seja, é possível: salvar, deletar, editar e listar ambas as entidades do projeto.
+
+
+
+
+
+
+
+
+
+
+
