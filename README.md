@@ -24,21 +24,32 @@ O projeto pode ser utilizado com a ferrmenta no link:
 
 ## Foto do modelo Relacional
 
+## Exemplos de execução no Postman ou no Swagger
+
 ![](/modulo3/src/main/resources/modeloRelacional.png)
 
-## Exemplo de como cadastrar um produto:
+### Exemplo de como cadastrar uma categoria:
+### Método POST
+### Url http://localhost:4000/categorias
+
+    {
+        "nome": "biscoitos",
+        "descricao": "bolachas, biscoitos e waffer" 
+    }
+
+### Exemplo de como cadastrar um produto:
 ### Método POST
 ### Url http://localhost:4000/produtos
 
     {
-        "nome": "bolacha",
+        "nome": "bolacha recheada",
         "valorProduto":5.0,
         "statusProduto": true,
         "id_categoria":1
     }
 
 
-
+#### Obs.: É necessário ter no mínimo uma categoria registrada antes de cadastrar um  produto.
 
 
 ## Funcionalidade da aplicação
