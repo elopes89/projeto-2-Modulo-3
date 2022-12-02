@@ -34,7 +34,7 @@ O projeto pode ser utilizado com a ferrmenta no link:
 
     {
         "nome": "biscoitos",
-        "descricao": "bolachas, biscoitos e waffer" 
+        "descricao": "bolachas, biscoitos e wafer" 
     }
 
 ### Exemplo de como cadastrar um produto:
