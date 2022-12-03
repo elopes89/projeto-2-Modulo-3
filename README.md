@@ -9,6 +9,9 @@ Projeto desenvolvido em java com Spring Boot.
   - PgAdmin4 ou DBeaver
   - Google Chrome
 
+## Funcionalidade da aplicação
+Com a aplicação é possível fazer um crud completo tanto de produtos quanto de suas categoarias. Ou seja, é possível: salvar, deletar, editar e listar ambas as entidades do projeto.
+
 ## Como usar a aplicação
 
 - No Intellij abra o arquivo pom.xml como projeto 
@@ -33,9 +36,13 @@ O projeto pode ser executado com a ferramenta de documentação:
 
 ![](/modulo3/src/main/resources/postCategoria.png)
 
+### Exemplo de como exibir uma categoria:
+### Método GET
+
+![](/modulo3/src/main/resources/getCategoria.png)
 
 ### Exemplo de como editar uma categoria:
-### Método GET
+### Método PUT
 
 ![](/modulo3/src/main/resources/putCategoria.png)
 
@@ -44,8 +51,16 @@ O projeto pode ser executado com a ferramenta de documentação:
 
 ![](/modulo3/src/main/resources/deleteCategoria.png)
 
+### Atenção!!!
+Se um produto estiver cadastrado com uma categoria será exibido este erro:
+### Método DELETE
+
+![](/modulo3/src/main/resources/erroDeleteCategoria.png)
+
+
 
 ### Exemplo de como cadastrar um produto:
+  Este é o formato Json para realizar o cadastro da entidade. Para manipular a entidade Produto é só seguir seguir os passos de Categoria.
 #### Obs.: É necessário ter no mínimo uma categoria registrada antes de cadastrar um  produto.
 ### Método POST
 ### Url http://localhost:4000/produtos
@@ -60,6 +75,7 @@ O projeto pode ser executado com a ferramenta de documentação:
 Resultado esperado:
 
     {
+        id": 1,
         "nome": "bolacha recheada",
         "valorProduto":5.0,
         "statusProduto": true,
@@ -67,20 +83,8 @@ Resultado esperado:
     }
 
 
-### Exemplo de como alterar uma categoria:
-### Método PUT
-
-
-![](/modulo3/src/main/resources/putCategoria.png)
-
-
-## Funcionalidade da aplicação
-Com a aplicação é possível fazer um crud completo tanto de produtos quanto de suas categoarias. Ou seja, é possível: salvar, deletar, editar e listar ambas as entidades do projeto.
-
-
-
-
-
+###Produzido por Emanuel Lopes
+Aluno FuturoDev Senai
 
 
 
