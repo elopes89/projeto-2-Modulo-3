@@ -22,11 +22,13 @@ public class SpringFoxConfig implements WebMvcConfigurer{
                 .select()
                 .apis(RequestHandlerSelectors.any())
                 .build()
-                .apiInfo(metaData()).tags(new Tag("Produtos", "Crud Produtos"));
+                .apiInfo(metaData())
+                .tags(new Tag("Produtos", "Crud Produtos"),
+                        new Tag("Categorias", "Crud Categorias"));
     }
 
     private ApiInfo metaData(){
-        return new ApiInfoBuilder().title("spring Boot API")
+        return new ApiInfoBuilder().title("Projeto 2 Módulo 3")
                 .description("Projeto Spring Boot REST API")
                 .version("1.0.0")
                 .license("Apache License Version 2.0")

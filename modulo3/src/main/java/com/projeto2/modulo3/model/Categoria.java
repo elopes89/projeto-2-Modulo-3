@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,13 +21,14 @@ public class Categoria implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true)
+    @NotBlank(message = "Preencha")
+    @NotNull(message = " O valor não pode ser nulo!")
+    @Column(unique = true)
     private String nome;
 
-    @Column(nullable = false, unique = true)
     private String descricao;
-
-    @OneToMany(mappedBy = "categoria", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    
+    @OneToMany(mappedBy = "categoria", fetch = FetchType.EAGER)
     private List<Produto> produtos = new ArrayList<Produto>();
 
     @JsonManagedReference
@@ -34,8 +37,4 @@ public class Categoria implements Serializable {
     }
 
 }
-//    @OneToMany(targetEntity = Produto.class, cascade = CascadeType.ALL)
-//    @JoinColumn(name = "id_categoria", referencedColumnName = "id")
-//    private List<Produto> produtos;
-
 

@@ -5,15 +5,19 @@ import com.projeto2.modulo3.input.ProdutoInput;
 import com.projeto2.modulo3.model.Produto;
 import com.projeto2.modulo3.service.CategoriaService;
 import com.projeto2.modulo3.service.ProdutoService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Api(tags = "Produtos")
@@ -28,6 +32,9 @@ public class ProdutoController {
     CategoriaService categoriaService;
 
     @ApiOperation("LISTAR")
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Produtos listados")
+            , @ApiResponse(code = 401, message = "Usuário sem permissão para acessar o recurso")
+            , @ApiResponse(code = 404, message = "Recurso não encontrado")})
     @GetMapping
     public ResponseEntity<List<ProdutoDto>> listar() {
         List<Produto> produtos = produtoService.list();
@@ -35,14 +42,23 @@ public class ProdutoController {
     }
 
     @ApiOperation("CADASTRAR")
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Produto cadastrado")
+            , @ApiResponse(code = 201, message = "Produto cadastrado com sucesso")
+            , @ApiResponse(code = 401, message = "Usuário sem permissão para acessar o recurso")
+            , @ApiResponse(code = 403, message = "Proibido")
+            , @ApiResponse(code = 404, message = "Recurso não encontrado")})
     @PostMapping
-    public ResponseEntity<ProdutoDto> cadastrar(@RequestBody ProdutoInput produto) {
+    public ResponseEntity<ProdutoDto> cadastrar(@RequestBody @Valid ProdutoInput produto) {
         Produto prod = toDomain(produto);
         produtoService.salvar(prod);
         return new ResponseEntity<ProdutoDto>(toModel(prod), HttpStatus.CREATED);
     }
 
     @ApiOperation("ALTERAR")
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Produto alterado")
+            , @ApiResponse(code = 401, message = "Usuário sem permissão para acessar o recurso")
+            , @ApiResponse(code = 403, message = "Proibido")
+            , @ApiResponse(code = 404, message = "Recurso não encontrado")})
     @PutMapping
     public ResponseEntity<ProdutoDto> alterar(@ApiParam(value = "Produto editado: ", example = "1") @RequestBody ProdutoInput produto) {
         Produto prod = toDomain(produto);
@@ -51,6 +67,10 @@ public class ProdutoController {
     }
 
     @ApiOperation("DELETAR")
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Produto deletado")
+            , @ApiResponse(code = 401, message = "Usuário sem permissão para acessar o recurso")
+            , @ApiResponse(code = 403, message = "Proibido")
+            , @ApiResponse(code = 404, message = "Recurso não encontrado")})
     @DeleteMapping
     @ResponseBody
     public ResponseEntity<String> delete(@ApiParam(value = "Id deletado com sucesso", example = "1") @RequestParam Long idProduto) {
@@ -58,8 +78,11 @@ public class ProdutoController {
         return new ResponseEntity<String>("Id do Produto Deletado: " + idProduto, HttpStatus.OK);
     }
 
-
     @ApiOperation("LISTAR TOTAL DE COMPRADOS")
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Total dos produtos com Status True")
+            , @ApiResponse(code = 401, message = "Usuário sem permissão para acessar o recurso")
+            , @ApiResponse(code = 403, message = "Proibido")
+            , @ApiResponse(code = 404, message = "Recurso não encontrado")})
     @GetMapping(value = "/total")
     public ResponseEntity<String> getValorComprado() {
         return new ResponseEntity<String>("Total comprado: " + produtoService.getTotalComprado().toString(), HttpStatus.OK);

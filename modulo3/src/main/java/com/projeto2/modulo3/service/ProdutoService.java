@@ -40,3 +40,15 @@ public class ProdutoService {
     }
 
 }
+
+//if(pm.getNome().equals("")){
+//        rm.setMensagem("O nome do produto é obrigatório");
+//        return new ResponseEntity<ResponseModel>(rm,HttpStatus.BAD_REQUEST);
+//        }else if(pm.getMarca().equals("")){
+//        rm.setMensagem("O nome da marca é obrigatório");
+//        return new ResponseEntity<ResponseModel>(rm,HttpStatus.BAD_REQUEST);
+//        }else{
+//        if(acao.equals("cadastrar")){
+//        return new ResponseEntity<ProdutoModel>(pr.save(pm),HttpStatus.CREATED);
+//        }else{
+//        return new ResponseEntity<ProdutoModel>(pr.save(pm),HttpStatus.OK);
