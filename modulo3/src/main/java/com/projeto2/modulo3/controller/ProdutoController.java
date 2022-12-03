@@ -63,7 +63,7 @@ public class ProdutoController {
     public ResponseEntity<ProdutoDto> alterar(@ApiParam(value = "Produto editado: ", example = "1") @RequestBody ProdutoInput produto) {
         Produto prod = toDomain(produto);
         produtoService.salvar(prod);
-        return new ResponseEntity<ProdutoDto>(toModel(prod), HttpStatus.CREATED);
+        return new ResponseEntity<ProdutoDto>(toModel(prod), HttpStatus.OK);
     }
 
     @ApiOperation("DELETAR")
