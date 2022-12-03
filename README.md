@@ -75,7 +75,7 @@ Se um produto estiver cadastrado com uma categoria será exibido este erro:
 Resultado esperado:
 
     {
-        id": 1,
+        "id": 1,
         "nome": "bolacha recheada",
         "valorProduto":5.0,
         "statusProduto": true,
@@ -83,8 +83,8 @@ Resultado esperado:
     }
 
 
-###Produzido por Emanuel Lopes
-Aluno FuturoDev Senai
+### Produzido por Emanuel Lopes
+## Aluno FuturoDev Senai
 
 
 
