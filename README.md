@@ -30,20 +30,8 @@ O projeto pode ser executado com a ferramenta de documentação:
 
 ### Exemplo de como cadastrar uma categoria:
 ### Método POST
-### Url http://localhost:4000/categorias
 
-    {
-        "nome": "biscoitos",
-        "descricao": "bolachas, biscoitos e wafer" 
-    }
-
-Resultado esperado:
-
-    {
-        "id": 1,
-        "nome": "biscoitos",
-        "descricao": "bolachas, biscoitos e wafer" 
-    }
+![](/modulo3/src/main/resources/postCategoria.png)
 
 
 ### Exemplo de como cadastrar um produto:
@@ -67,22 +55,11 @@ Resultado esperado:
     }
 
 
-### Exemplo de como cadastrar uma categoria:
-### Método POST
-### Url http://localhost:4000/categorias
+### Exemplo de como alterar uma categoria:
+### Método PUT
 
-    {
-        "nome": "biscoitos",
-        "descricao": "bolachas, biscoitos e wafer" 
-    }
 
-Resultado esperado:
-
-    {
-        "id": 1,
-        "nome": "biscoitos",
-        "descricao": "bolachas, biscoitos e wafer" 
-    }
+![](/modulo3/src/main/resources/putCategoria.png)
 
 
 ### Exemplo de como editar um produto:
