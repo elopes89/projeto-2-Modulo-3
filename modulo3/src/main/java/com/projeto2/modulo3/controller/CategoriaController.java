@@ -69,7 +69,7 @@ public class CategoriaController {
     @ResponseBody
     public ResponseEntity<String> delete(@RequestParam Long idCategoria) {
         categoriaService.delete(idCategoria);
-        return new ResponseEntity<String>("Categoria de ID: " + idCategoria, HttpStatus.OK);
+        return new ResponseEntity<String>("ID da Categoria deletada: " + idCategoria, HttpStatus.OK);
     }
 
 
@@ -96,8 +96,4 @@ public class CategoriaController {
         return categorias.stream().map(Categoria -> toDto(Categoria))
                 .collect(Collectors.toList());
     }
-
-
-
-
 }
