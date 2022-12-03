@@ -34,7 +34,19 @@ O projeto pode ser executado com a ferramenta de documentação:
 ![](/modulo3/src/main/resources/postCategoria.png)
 
 
+### Exemplo de como editar uma categoria:
+### Método GET
+
+![](/modulo3/src/main/resources/putCategoria.png)
+
+### Exemplo de como deletar uma categoria:
+### Método DELETE
+
+![](/modulo3/src/main/resources/deleteCategoria.png)
+
+
 ### Exemplo de como cadastrar um produto:
+#### Obs.: É necessário ter no mínimo uma categoria registrada antes de cadastrar um  produto.
 ### Método POST
 ### Url http://localhost:4000/produtos
 
@@ -60,32 +72,6 @@ Resultado esperado:
 
 
 ![](/modulo3/src/main/resources/putCategoria.png)
-
-
-### Exemplo de como editar um produto:
-### Método POST
-### Url http://localhost:4000/produtos
-
-    {
-        "nome": "bolacha recheada",
-        "valorProduto":5.0,
-        "statusProduto": true,
-        "id_categoria":1
-    }
-
-Resultado esperado:
-
-    {
-        "nome": "bolacha recheada",
-        "valorProduto":5.0,
-        "statusProduto": true,
-        "id_categoria":1
-    }
-
-
-
-
-#### Obs.: É necessário ter no mínimo uma categoria registrada antes de cadastrar um  produto.
 
 
 ## Funcionalidade da aplicação
