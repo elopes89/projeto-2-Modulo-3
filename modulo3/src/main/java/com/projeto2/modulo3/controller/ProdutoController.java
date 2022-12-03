@@ -9,9 +9,15 @@ import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Api(tags = "Produtos")
@@ -42,7 +48,7 @@ public class ProdutoController {
             , @ApiResponse(code = 403, message = "Proibido")
             , @ApiResponse(code = 404, message = "Recurso não encontrado")})
     @PostMapping
-    public ResponseEntity<ProdutoDto> cadastrar(@RequestBody ProdutoInput produto) {
+    public ResponseEntity<ProdutoDto> cadastrar(@RequestBody @Valid ProdutoInput produto) {
         Produto prod = toDomain(produto);
         produtoService.salvar(prod);
         return new ResponseEntity<ProdutoDto>(toModel(prod), HttpStatus.CREATED);
@@ -71,7 +77,6 @@ public class ProdutoController {
         produtoService.delete(idProduto);
         return new ResponseEntity<String>("Id do Produto Deletado: " + idProduto, HttpStatus.OK);
     }
-
 
     @ApiOperation("LISTAR TOTAL DE COMPRADOS")
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Total dos produtos com Status True")
@@ -107,19 +112,5 @@ public class ProdutoController {
     private List<ProdutoDto> toCollection(List<Produto> produtos) {
         return produtos.stream().map(Produto -> toModel(Produto)).collect(Collectors.toList());
     }
-
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    public Map<String, String> handleValidationException(MethodArgumentNotValidException ex){
-            Map<String, String> errors = new HashMap<>();
-
-            ex.getBindingResult().getAllErrors().forEach((error) ->{
-                String fieldName = ((FieldError) error).getField();
-                String errorMessage = error.getDefaultMessage();
-                errors.put(fieldName, errorMessage);
-            });
-        return errors;
-    }
-
 
 }

@@ -4,12 +4,15 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Data
 @Entity
-@Table(name = "produto")
+@Table(name = "produtos")
 public class Produto implements Serializable {
     @EqualsAndHashCode.Include
 
@@ -17,14 +20,15 @@ public class Produto implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // @NotBlank(message = "O nome é obrigatório!")
-    @Column(nullable = false, unique = true)
+    @NotBlank(message = "Preencha")
+    @NotNull(message = " O valor não pode ser nulo!")
+    @Column(unique = true, nullable = false)
     private String nome;
-    @NotBlank(message = "O nome é obrigatório!")
-     @Column(nullable = false, unique = true)
+
+    @NotNull(message = " O valor não pode ser nulo!")
     private Double valorProduto;
 
-    @Column(nullable = false, unique = true)
+    @NotNull(message = " O valor não pode ser nulo!")
     private Boolean StatusProduto;
 
     @ManyToOne
