@@ -18,7 +18,7 @@ Projeto desenvolvido em java com Spring Boot.
 - Retorne ao DBeaver e veja os resultados da manipulação obtida com os endpoints
   
 ## Projeto documentado com a ferramenta Swagger.
-O projeto pode ser utilizado com a ferrmenta no link: 
+O projeto pode ser executado com a ferramenta de documentação:   
  [Swagger](http://localhost:4000/swagger-ui.html#/)
 
 
@@ -37,6 +37,15 @@ O projeto pode ser utilizado com a ferrmenta no link:
         "descricao": "bolachas, biscoitos e wafer" 
     }
 
+Resultado esperado:
+
+    {
+        "id": 1,
+        "nome": "biscoitos",
+        "descricao": "bolachas, biscoitos e wafer" 
+    }
+
+
 ### Exemplo de como cadastrar um produto:
 ### Método POST
 ### Url http://localhost:4000/produtos
@@ -47,6 +56,56 @@ O projeto pode ser utilizado com a ferrmenta no link:
         "statusProduto": true,
         "id_categoria":1
     }
+
+Resultado esperado:
+
+    {
+        "nome": "bolacha recheada",
+        "valorProduto":5.0,
+        "statusProduto": true,
+        "id_categoria":1
+    }
+
+
+### Exemplo de como cadastrar uma categoria:
+### Método POST
+### Url http://localhost:4000/categorias
+
+    {
+        "nome": "biscoitos",
+        "descricao": "bolachas, biscoitos e wafer" 
+    }
+
+Resultado esperado:
+
+    {
+        "id": 1,
+        "nome": "biscoitos",
+        "descricao": "bolachas, biscoitos e wafer" 
+    }
+
+
+### Exemplo de como editar um produto:
+### Método POST
+### Url http://localhost:4000/produtos
+
+    {
+        "nome": "bolacha recheada",
+        "valorProduto":5.0,
+        "statusProduto": true,
+        "id_categoria":1
+    }
+
+Resultado esperado:
+
+    {
+        "nome": "bolacha recheada",
+        "valorProduto":5.0,
+        "statusProduto": true,
+        "id_categoria":1
+    }
+
+
 
 
 #### Obs.: É necessário ter no mínimo uma categoria registrada antes de cadastrar um  produto.
