@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+@CrossOrigin(origins = "*")
 @Api(tags = "Produtos")
 @RestController
 @RequestMapping(value = "/produtos")
@@ -48,7 +49,7 @@ public class ProdutoController {
             , @ApiResponse(code = 403, message = "Proibido")
             , @ApiResponse(code = 404, message = "Recurso não encontrado")})
     @PostMapping
-    public ResponseEntity<ProdutoDto> cadastrar(@RequestBody @Valid ProdutoInput produto) {
+    public ResponseEntity<ProdutoDto> cadastrar(@ApiParam(value = "Produto cadastrado") @RequestBody @Valid ProdutoInput produto) {
         Produto prod = toDomain(produto);
         produtoService.salvar(prod);
         return new ResponseEntity<ProdutoDto>(toModel(prod), HttpStatus.CREATED);
@@ -71,9 +72,9 @@ public class ProdutoController {
             , @ApiResponse(code = 401, message = "Usuário sem permissão para acessar o recurso")
             , @ApiResponse(code = 403, message = "Proibido")
             , @ApiResponse(code = 404, message = "Recurso não encontrado")})
-    @DeleteMapping
+    @DeleteMapping("/{idProduto}")
     @ResponseBody
-    public ResponseEntity<String> delete(@ApiParam(value = "Id deletado com sucesso", example = "1") @RequestParam Long idProduto) {
+    public ResponseEntity<String> delete(@ApiParam(value = "Id deletado com sucesso", example = "1") @PathVariable Long idProduto) {
         produtoService.delete(idProduto);
         return new ResponseEntity<String>("Id do Produto Deletado: " + idProduto, HttpStatus.OK);
     }
@@ -84,10 +85,9 @@ public class ProdutoController {
             , @ApiResponse(code = 403, message = "Proibido")
             , @ApiResponse(code = 404, message = "Recurso não encontrado")})
     @GetMapping(value = "/total")
-    public ResponseEntity<String> getValorComprado() {
-        return new ResponseEntity<String>("Total comprado: " + produtoService.getTotalComprado().toString(), HttpStatus.OK);
+    public ResponseEntity<String> getTotal() {
+        return new ResponseEntity<String>("Total comprado: " + produtoService.getTotal(), HttpStatus.OK);
     }
-
     private Produto toDomain(ProdutoInput input) {
         Produto produto = new Produto();
         produto.setId(input.getId());
