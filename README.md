@@ -2,6 +2,11 @@
 
 Projeto desenvolvido em java com Spring Boot.
 
+## Front End do Projeto
+O projeto atual pode ser executado no Front End, uma maneira mais amigável de executar o mesmo.
+Segue o link da parte do Front:
+
+[Front End](https://github.com/elopes89/frontProjeto2Modulo3/tree/main)
 ## Ferramentas necessárias para uso do projeto:
 
   - Intellij 
